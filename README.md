@@ -1,4 +1,4 @@
-###Task 1 (file index.php)
+### Task 1 (file index.php)
 # Keyword Search Webpage
 
 ## Overview
@@ -45,7 +45,7 @@ mod_livepoll_extended, NOT FOUND
 mod_hsu, NOT FOUND
 
 
-###Task 2 (folder customreportplugin)
+### Task 2 (folder customreportplugin)
 # Custom Report Plugin for Moodle
 
 ## Overview
