@@ -3,7 +3,7 @@
 require_once('C:\danya\programs\OSPanel\domains\moodle\config.php');
 require_login();
 
-// Проверка прав доступа администратора
+// Checking administrator access rights
 if (!is_siteadmin()) {
     print_error('errornoadmin');
 }
@@ -15,7 +15,7 @@ $PAGE->set_heading(get_string('pluginname', 'report_customreport'));
 
 echo $OUTPUT->header();
 
-// Выполнение SQL-запроса для получения данных
+// Executing an SQL query to retrieve data
 global $DB;
 $sql = "SELECT u.id, u.firstname, u.lastname, GROUP_CONCAT(c.fullname SEPARATOR ', ') AS courses
         FROM {user} u
@@ -27,7 +27,7 @@ $sql = "SELECT u.id, u.firstname, u.lastname, GROUP_CONCAT(c.fullname SEPARATOR 
         LIMIT 10";
 $records = $DB->get_records_sql($sql);
 
-// Отображение данных в таблице HTML
+// Displaying data in an HTML table
 $table = new html_table();
 $table->head = array('User', 'Courses');
 foreach ($records as $record) {
