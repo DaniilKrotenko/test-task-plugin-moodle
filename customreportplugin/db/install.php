@@ -1,7 +1,6 @@
 <?php
 
 function xmldb_report_customreport_install() {
-    // Создание таблицы базы данных
     global $DB;
     
     $table = new xmldb_table('report_customreport');
@@ -9,7 +8,7 @@ function xmldb_report_customreport_install() {
     $field2 = new xmldb_field('userid', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, null);
     $field3 = new xmldb_field('courseid', XMLDB_TYPE_INTEGER, '10', null, XMLDB_NOTNULL, null, null);
     
-    // Добавьте другие поля, если необходимо
+    // Add other fields if necessary
     
     $table->addField($field1);
     $table->addField($field2);
@@ -23,7 +22,7 @@ function xmldb_report_customreport_install() {
     
     $table->addIndex(new xmldb_index('userid_courseid_idx', XMLDB_INDEX_UNIQUE, array('userid', 'courseid')));
     
-    // Создание таблицы
+    // Creating a table
     if (!$DB->table_exists($table)) {
         $DB->create_table($table);
     }
