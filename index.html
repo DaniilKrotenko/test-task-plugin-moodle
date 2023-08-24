@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyword Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<h1>Keyword Search</h1>
+<label for="fullText">Full Text:</label>
+<textarea id="fullText" rows="5" cols="50"></textarea><br>
+
+<label for="keywords">Keywords List:</label>
+<textarea id="keywords" rows="5" cols="50"></textarea><br>
+
+<button id="searchButton">Search</button>
+
+<div id="results"></div>
+
+<script>
+    document.getElementById("searchButton").addEventListener("click", function () {
+        const fullText = document.getElementById("fullText").value;
+        const keywordsText = document.getElementById("keywords").value;
+
+        // Split keywords by comma and trim whitespace
+        const keywords = keywordsText.split(/[,\s]+/).map(keyword => keyword.trim());
+
+        const results = [];
+
+        keywords.forEach(keyword => {
+            if (keyword.startsWith("mod_")) {
+                const regex = new RegExp(`\\b${keyword}\\b`, 'gi');
+                if (fullText.match(regex)) {
+                    results.push(`${keyword}, FOUND`);
+                } else {
+                    results.push(`${keyword}, NOT FOUND`);
+                }
+            }
+        });
+
+        const resultsDiv = document.getElementById("results");
+        resultsDiv.innerHTML = results.join("<br>");
+
+    });
+</script>
+</body>
+</html>
